@@ -35,7 +35,7 @@
 
   <body>
     <div>
-      <h1 onclick="#">Questo è il titolo della pagina</h1>
+      <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
       <h2>Questo è il sottotitolo della pagina</h2>
     </div>
 
@@ -70,7 +70,7 @@
 
     <div id="tableArea"></div>
 
-    <footer>
+    <footer onclick="revealFooterLink()">
       <h3>
         DOM Manipulation is super
         <a
@@ -114,7 +114,7 @@
         */
 
       const changeUrls = function () {
-        const anchors = document.querySelectorAll("a")
+        const anchors = document.querySelectorAll("a:not(footer a)")
         anchors.forEach((anchor) => {
           anchor.setAttribute("href", "https://www.google.com")
         })
@@ -166,20 +166,46 @@
 
       const makeItClickable = function () {
         const h1 = document.getElementsByTagName("h1")[0]
+        h1.innerText = h1.innerText.slice(0, -1)
       }
 
       /* ESERCIZIO 10
          Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
         */
 
-      const revealFooterLink = function () {}
+      const revealFooterLink = function () {
+        const footerLink = document.querySelector("footer a")
+        const hrefValue = footerLink.getAttribute("href")
+        alert(hrefValue)
+      }
 
       /* ESERCIZIO 11
          Crea una funzione che crei una tabella nell'elemento con id "tableArea".
          La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
       */
 
-      const generateTable = function () {}
+      const generateTable = function () {
+        const table = document.createElement("table") //<table></table>
+        const container = document.getElementById("tableArea")
+        table.innerHTML = `
+        <tr>
+          <><>
+          <><>
+          <><>
+          <><>
+          
+          
+          
+          
+          
+          </tr>
+          
+          
+          
+          
+          
+          `
+      }
 
       /* ESERCIZIO 12
          Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
